@@ -7,9 +7,15 @@ if v:progname =~? "evim"
   finish
 endif
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
+"vundle plugins
 set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+filetype plugin indent on
+"vundle plugins end
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
