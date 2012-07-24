@@ -14,6 +14,9 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+"packages
+Bundle 'flazz/vim-colorschemes'
+
 filetype plugin indent on
 "vundle plugins end
 
@@ -110,3 +113,6 @@ if !exists(":DiffOrig")
   command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
                   \ | wincmd p | diffthis
 endif
+
+"Set Colorscheme
+colorscheme zenburn
