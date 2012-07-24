@@ -30,6 +30,9 @@ alias e=vim
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# nodebrew
+PATH=$HOME/.nodebrew/current/bin:$PATH
+
 
 # プロンプトの設定 
 local GREEN=$'%{\e[1;32m%}'
