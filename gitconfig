@@ -1,5 +1,4 @@
-[user]
-	name = Takaya SAITO
-	email = tsaito@aiming-inc.com
+[include]
+	path = .gitconfig.local
 [core]
 	editor = vim
