@@ -26,6 +26,11 @@ alias vi=vim
 alias e=vim
 
 
+# rvm
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+
 # プロンプトの設定 
 local GREEN=$'%{\e[1;32m%}'
 local BLUE=$'%{\e[1;34m%}'
