@@ -16,6 +16,7 @@ Bundle 'gmarik/vundle'
 
 "packages
 Bundle 'flazz/vim-colorschemes'
+Bundle 'kchmck/vim-coffee-script'
 
 filetype plugin indent on
 "vundle plugins end
