@@ -17,7 +17,7 @@ export EDITOR=vim
 find-grep () { find . -type f -print | xargs grep -n --binary-files=without-match $@ }
 
 # エイリアスの設定
-alias ls='ls --color=auto'
+alias ls='ls -G'
 alias ll='ls -ltr'
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
 alias o=xdg-open
