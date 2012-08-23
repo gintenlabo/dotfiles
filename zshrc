@@ -43,14 +43,6 @@ PROMPT=$BLUE'[${USER}@${HOSTNAME}] %(!.#.$) '$DEFAULT
 RPROMPT=$GREEN'[%~]'$DEFAULT
 setopt PROMPT_SUBST
 
-# ターミナルの設定
-case "${TERM}" in
-kterm*|xterm)
-  precmd() {
-    echo -ne "\033]0;Terminal: $PWD\007"
-  }
-esac
-
 
 # ヒストリの設定
 HISTFILE=~/.histfile
