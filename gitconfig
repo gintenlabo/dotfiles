@@ -2,3 +2,5 @@
 	path = .gitconfig.local
 [core]
 	editor = vim
+[alias]
+	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
