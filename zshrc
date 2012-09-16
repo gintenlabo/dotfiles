@@ -52,6 +52,9 @@ SAVEHIST=100000
 # 履歴ファイルに時刻を記録
 setopt extended_history
 
+# Ctrl+r による補完を有効化
+bindkey -e
+
 # 補完するかの質問は画面を超える時にのみに行う｡
 LISTMAX=0
 
