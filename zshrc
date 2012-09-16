@@ -23,7 +23,7 @@ alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
 alias o=open
 alias v=vim
 alias vi=vim
-alias e=vim
+alias e=gvim
 
 
 # rvm
