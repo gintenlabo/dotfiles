@@ -118,6 +118,11 @@ endif " has("autocmd")
 
 " vim-quickrun config
 let g:quickrun_config = {}
+let g:quickrun_config['ghmarkdown'] = {
+  \   'command':'pandoc',
+  \   'cmdopt':'-s',
+  \   'outputter':'browser'
+  \ }
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.
