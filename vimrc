@@ -21,6 +21,7 @@ Bundle 'tpope/vim-rails'
 Bundle 'thinca/vim-quickrun'
 Bundle 'tyru/open-browser.vim'
 Bundle 'jtratner/vim-flavored-markdown'
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 "vundle plugins end
