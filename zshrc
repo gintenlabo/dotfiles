@@ -54,6 +54,7 @@ kterm*|xterm*)
   }
 esac
 
+
 # ヒストリの設定
 HISTFILE=~/.histfile
 HISTSIZE=100000
