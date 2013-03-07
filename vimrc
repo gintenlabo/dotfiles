@@ -19,6 +19,7 @@ Bundle 'flazz/vim-colorschemes'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-rails'
 Bundle 'thinca/vim-quickrun'
+Bundle 'tyru/open-browser.vim'
 
 filetype plugin indent on
 "vundle plugins end
