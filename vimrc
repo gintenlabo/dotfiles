@@ -18,6 +18,9 @@ Bundle 'gmarik/vundle'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-rails'
+Bundle 'thinca/vim-quickrun'
+Bundle 'tyru/open-browser.vim'
+Bundle 'jtratner/vim-flavored-markdown'
 
 filetype plugin indent on
 "vundle plugins end
@@ -109,7 +112,20 @@ if has("autocmd")
 
   augroup END
 
+  augroup markdown
+      au!
+      au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+  augroup END
+
 endif " has("autocmd")
+
+" vim-quickrun config
+let g:quickrun_config = {}
+let g:quickrun_config['ghmarkdown'] = {
+  \   'command':'pandoc',
+  \   'cmdopt':'-s',
+  \   'outputter':'browser'
+  \ }
 
 " Convenient command to see the difference between the current buffer and the
 " file it was loaded from, thus the changes you made.

@@ -33,6 +33,9 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # nodebrew
 PATH=$HOME/.nodebrew/current/bin:$PATH
 
+# cabal
+PATH=$HOME/.cabal/bin:$PATH
+
 
 # プロンプトの設定 
 local GREEN=$'%{\e[1;32m%}'
