@@ -18,6 +18,7 @@ Bundle 'gmarik/vundle'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'tpope/vim-rails'
+Bundle 'thinca/vim-quickrun'
 
 filetype plugin indent on
 "vundle plugins end
