@@ -39,6 +39,10 @@ PATH=$HOME/.cabal/bin:$PATH
 # gcc
 PATH=/usr/local/gcc/latest/bin:$PATH
 
+# boost
+export BOOST_ROOT=/usr/local/boost/latest
+export CPLUS_INCLUDE_PATH=$BOOST_ROOT:$CPLUS_INCLUDE_PATH
+
 
 # プロンプトの設定 
 local GREEN=$'%{\e[1;32m%}'
