@@ -36,6 +36,9 @@ PATH=$HOME/.nodebrew/current/bin:$PATH
 # cabal
 PATH=$HOME/.cabal/bin:$PATH
 
+# gcc
+PATH=/usr/local/gcc/latest/bin:$PATH
+
 
 # プロンプトの設定 
 local GREEN=$'%{\e[1;32m%}'
