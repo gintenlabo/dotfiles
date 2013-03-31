@@ -36,6 +36,17 @@ PATH=$HOME/.nodebrew/current/bin:$PATH
 # cabal
 PATH=$HOME/.cabal/bin:$PATH
 
+# gcc
+PATH=/usr/local/gcc/latest/bin:$PATH
+alias g++03='g++ -std=gnu++03 -Wall -Wextra'
+alias g++0x='g++ -std=gnu++0x -Wall -Wextra'
+alias g++11='g++ -std=gnu++11 -Wall -Wextra'
+alias g++1y='g++ -std=gnu++1y -Wall -Wextra'
+
+# boost
+export BOOST_ROOT=/usr/local/boost/latest
+export CPLUS_INCLUDE_PATH=$BOOST_ROOT:$CPLUS_INCLUDE_PATH
+
 
 # プロンプトの設定 
 local GREEN=$'%{\e[1;32m%}'
