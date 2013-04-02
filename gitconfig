@@ -6,4 +6,4 @@
 [alias]
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
 [push]
-	default = simple
+	default = current

@@ -23,6 +23,7 @@ Bundle 'tyru/open-browser.vim'
 Bundle 'jtratner/vim-flavored-markdown'
 Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/gitv'
+Bundle 'vim-jp/cpp-vim'
 
 filetype plugin indent on
 "vundle plugins end
