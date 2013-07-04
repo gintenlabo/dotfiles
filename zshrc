@@ -19,7 +19,7 @@ alias g++1y='g++ -std=gnu++1y -Wall -Wextra'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 
-# プロンプトの設定 
+# プロンプトの設定
 local GREEN=$'%{\e[1;32m%}'
 local BLUE=$'%{\e[1;34m%}'
 local DEFAULT=$'%{\e[1;m%}'
@@ -45,16 +45,17 @@ SAVEHIST=100000
 # 履歴ファイルに時刻を記録
 setopt extended_history
 
-# 補完するかの質問は画面を超える時にのみに行う｡
+# 補完するかの質問は画面を超える時にのみに行う
 LISTMAX=0
 
+# 補完を有効化
 autoload -Uz compinit; compinit
 
 # sudo でも補完の対象
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
 # cdのタイミングで自動的にpushd
-setopt auto_pushd 
+setopt auto_pushd
 
 # 複数の zsh を同時に使う時など history ファイルに上書きせず追加
 setopt append_history
@@ -110,17 +111,17 @@ setopt print_eight_bit
 # シェルのプロセスごとに履歴を共有
 setopt share_history
 
-# Ctrl+wで､直前の/までを削除する｡
+# Ctrl+wで､直前の/までを削除する
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # ディレクトリを水色にする｡
 export LS_COLORS='di=01;36'
 
-# ファイルリスト補完でもlsと同様に色をつける｡
+# ファイルリスト補完でもlsと同様に色をつける
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# ディレクトリ名だけで､ディレクトリの移動をする｡
+# ディレクトリ名だけで､ディレクトリの移動をする
 setopt auto_cd
 
-# C-s, C-qを無効にする。
+# C-s, C-qを無効にする
 setopt no_flow_control
