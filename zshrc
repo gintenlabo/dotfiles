@@ -1,18 +1,3 @@
-# 文字コードの設定
-export LANG=ja_JP.UTF-8
-
-# ホスト名
-export HOSTNAME=`hostname`
-
-# パスの設定
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
-export    LIBRARY_PATH="/usr/local/lib"
-export LD_LIBRARY_PATH="/usr/local/lib"
-
-# エディタ設定
-export EDITOR=vim
-
 # 関数
 find-grep () { find . -type f -print | xargs grep -n --binary-files=without-match $@ }
 
@@ -25,30 +10,16 @@ alias v=vim
 alias vi=vim
 alias e=vim
 
-
-# rvm
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# nodebrew
-PATH=$HOME/.nodebrew/current/bin:$PATH
-
-# cabal
-PATH=$HOME/.cabal/bin:$PATH
-
-# gcc
-PATH=/usr/local/gcc/latest/bin:$PATH
 alias g++03='g++ -std=gnu++03 -Wall -Wextra'
 alias g++0x='g++ -std=gnu++0x -Wall -Wextra'
 alias g++11='g++ -std=gnu++11 -Wall -Wextra'
 alias g++1y='g++ -std=gnu++1y -Wall -Wextra'
 
-# boost
-export BOOST_ROOT=/usr/local/boost/latest
-export CPLUS_INCLUDE_PATH=$BOOST_ROOT:$CPLUS_INCLUDE_PATH
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 
-# プロンプトの設定 
+# プロンプトの設定
 local GREEN=$'%{\e[1;32m%}'
 local BLUE=$'%{\e[1;34m%}'
 local DEFAULT=$'%{\e[1;m%}'
@@ -74,16 +45,20 @@ SAVEHIST=100000
 # 履歴ファイルに時刻を記録
 setopt extended_history
 
-# 補完するかの質問は画面を超える時にのみに行う｡
+# Ctrl+r による補完を有効化
+bindkey -e
+
+# 補完するかの質問は画面を超える時にのみに行う
 LISTMAX=0
 
+# 補完を有効化
 autoload -Uz compinit; compinit
 
 # sudo でも補完の対象
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
 
 # cdのタイミングで自動的にpushd
-setopt auto_pushd 
+setopt auto_pushd
 
 # 複数の zsh を同時に使う時など history ファイルに上書きせず追加
 setopt append_history
@@ -139,18 +114,17 @@ setopt print_eight_bit
 # シェルのプロセスごとに履歴を共有
 setopt share_history
 
-# Ctrl+wで､直前の/までを削除する｡
+# Ctrl+wで､直前の/までを削除する
 WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
 
 # ディレクトリを水色にする｡
 export LS_COLORS='di=01;36'
 
-# ファイルリスト補完でもlsと同様に色をつける｡
+# ファイルリスト補完でもlsと同様に色をつける
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
-# ディレクトリ名だけで､ディレクトリの移動をする｡
+# ディレクトリ名だけで､ディレクトリの移動をする
 setopt auto_cd
 
-# C-s, C-qを無効にする。
+# C-s, C-qを無効にする
 setopt no_flow_control
-export PATH=$PATH
