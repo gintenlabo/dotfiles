@@ -14,16 +14,16 @@ export LD_LIBRARY_PATH="/usr/local/lib"
 export EDITOR=vim
 
 # rvm
-PATH=$PATH:$HOME/.rvm/bin
+export PATH=$PATH:$HOME/.rvm/bin
 
 # nodebrew
-PATH=$HOME/.nodebrew/current/bin:$PATH
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # cabal
-PATH=$HOME/.cabal/bin:$PATH
+export PATH=$HOME/.cabal/bin:$PATH
 
 # gcc
-PATH=/usr/local/gcc/latest/bin:$PATH
+export PATH=/usr/local/gcc/latest/bin:$PATH
 
 # boost
 export BOOST_ROOT=/usr/local/boost/latest
