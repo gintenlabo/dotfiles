@@ -1,0 +1,6 @@
+:set -Wall
+:set -fno-warn-type-defaults
+
+:set prompt "\n[%s]\n> "
+
+import Control.Monad
