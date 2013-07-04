@@ -1,18 +1,3 @@
-# 文字コードの設定
-export LANG=ja_JP.UTF-8
-
-# ホスト名
-export HOSTNAME=`hostname`
-
-# パスの設定
-export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
-export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
-export    LIBRARY_PATH="/usr/local/lib"
-export LD_LIBRARY_PATH="/usr/local/lib"
-
-# エディタ設定
-export EDITOR=vim
-
 # 関数
 find-grep () { find . -type f -print | xargs grep -n --binary-files=without-match $@ }
 
@@ -25,27 +10,13 @@ alias v=vim
 alias vi=vim
 alias e=vim
 
-
-# rvm
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# nodebrew
-PATH=$HOME/.nodebrew/current/bin:$PATH
-
-# cabal
-PATH=$HOME/.cabal/bin:$PATH
-
-# gcc
-PATH=/usr/local/gcc/latest/bin:$PATH
 alias g++03='g++ -std=gnu++03 -Wall -Wextra'
 alias g++0x='g++ -std=gnu++0x -Wall -Wextra'
 alias g++11='g++ -std=gnu++11 -Wall -Wextra'
 alias g++1y='g++ -std=gnu++1y -Wall -Wextra'
 
-# boost
-export BOOST_ROOT=/usr/local/boost/latest
-export CPLUS_INCLUDE_PATH=$BOOST_ROOT:$CPLUS_INCLUDE_PATH
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 
 # プロンプトの設定 
@@ -153,4 +124,3 @@ setopt auto_cd
 
 # C-s, C-qを無効にする。
 setopt no_flow_control
-export PATH=$PATH
