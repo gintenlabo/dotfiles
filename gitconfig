@@ -5,6 +5,8 @@
 	excludesfile = ~/.gitignore
 [alias]
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
+[merge]
+	ff = false
 [push]
 	default = current
 [rebase]
