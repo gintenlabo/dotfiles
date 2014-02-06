@@ -48,6 +48,8 @@ set incsearch           " do incremental searching
 set hidden              " enable multiple buffer
 set number              " display line numbers
 
+set wildmode=longest,full " complete filename like bash
+
 " indent
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
