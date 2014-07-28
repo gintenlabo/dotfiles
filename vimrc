@@ -38,6 +38,7 @@ if has("vms")
 else
   set backup                       " keep a backup file
   set backupdir=$HOME/.vim-backup  " specify backup directory
+  set undodir=$HOME/.vim-undo      " specify undo directory
   let &directory=&backupdir        " swap directory is same as backup
 endif
 
