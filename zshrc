@@ -8,7 +8,7 @@ alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
 alias o=open
 alias v=vim
 alias vi=vim
-alias e=gvim
+alias e=mvim
 
 alias g++03='g++ -std=gnu++03 -Wall -Wextra'
 alias g++0x='g++ -std=gnu++0x -Wall -Wextra'
