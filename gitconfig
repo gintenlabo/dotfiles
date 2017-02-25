@@ -3,6 +3,7 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore
+	precomposeunicode = true
 [alias]
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
 [merge]
