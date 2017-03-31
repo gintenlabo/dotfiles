@@ -33,4 +33,4 @@ export CPLUS_INCLUDE_PATH=$BOOST_ROOT:$CPLUS_INCLUDE_PATH
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
 # macvim
-export PATH=$PATH:/Applications/MacVim.app/Contents/MacOS
+export PATH=$PATH:/Applications/MacVim.app/Contents/bin
