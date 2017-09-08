@@ -34,3 +34,6 @@ export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
 # macvim
 export PATH=$PATH:/Applications/MacVim.app/Contents/bin
+
+#clang tools
+export PATH=/usr/local/opt/llvm/bin:$PATH
