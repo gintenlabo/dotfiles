@@ -37,3 +37,8 @@ export PATH=$PATH:/Applications/MacVim.app/Contents/bin
 
 #clang tools
 export PATH=/usr/local/opt/llvm/bin:$PATH
+
+#react native
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
