@@ -25,6 +25,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'gregsexton/gitv'
 Bundle 'vim-jp/cpp-vim'
 Bundle 'leafgarland/typescript-vim'
+Bundle 'editorconfig/editorconfig-vim'
 
 filetype plugin indent on
 "vundle plugins end
