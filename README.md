@@ -7,8 +7,8 @@
 
     dotfiles=zshrc,gitconfig,vimrc,vim#, ...
 
-    for file in $dotfiles; do
-      ln -s ${file} ~/.${file}
+    for file in `echo ${dotfiles//,/ }`; do
+      ln -sr ${file} ~/.${file}
     done
 
 
