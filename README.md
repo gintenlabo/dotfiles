@@ -35,7 +35,7 @@ then create your local gitconfig file:
 
 and run Vim, enter:
 
-    :BundleInstall
+    :PluginInstall
 
 
 ---
