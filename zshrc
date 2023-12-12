@@ -77,6 +77,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+export HOSTNAME=`hostname`
 export EDITOR=vim
 export PAGER="less -FRX"
 export LESSCHARSET=utf-8
