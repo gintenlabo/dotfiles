@@ -34,6 +34,11 @@ and run vim, enter:
     :PluginInstall
 
 
+### 4. compile locale
+
+    sudo localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
+
+
 ---
 ## To do
 
