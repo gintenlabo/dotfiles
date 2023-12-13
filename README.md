@@ -29,7 +29,7 @@
 
 ### 3. install Vundle
 
- Run Vim, enter:
+Run Vim, enter:
 
     :PluginInstall
 
