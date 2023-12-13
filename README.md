@@ -9,9 +9,7 @@
 
 ### 1. create symbolic links
 
-    dotfiles=zshrc,gitconfig,vimrc,vim#, ...
-
-    for file in `echo ${dotfiles//,/ }`; do
+    for file in `cat dotfiles`; do
       ln -sr ${file} ~/.${file}
     done
 
