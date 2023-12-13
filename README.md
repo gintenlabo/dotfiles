@@ -24,9 +24,12 @@
     # or use some editor (recommended)
 
 
-### 3. install Vundle
+### 3. setup vim
 
-Run Vim, enter:
+    mkdir ~/.vim-backup
+    mkdir ~/.vim-undo
+
+and run vim, enter:
 
     :PluginInstall
 
