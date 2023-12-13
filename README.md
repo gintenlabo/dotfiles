@@ -1,7 +1,7 @@
 ## How to install
 
 
-## 0. init submodules
+### 0. init submodules
 
     git submodule update --init
 
@@ -18,13 +18,6 @@
 
 
 ### 2. local setting for git
-
-To enable include, install latest version of git:
-
-    sudo add-apt-repository ppa:git-core/ppa
-    sudo apt-get update && sudo apt-get upgrade
-
-then create your local gitconfig file:
 
     cat <<EOF >~/.gitconfig.local
     [user]
