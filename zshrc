@@ -84,6 +84,9 @@ export LESSCHARSET=utf-8
 
 # You may need to manually set your language environment
 export LANG=ja_JP.UTF-8
+export LC_CTYPE=C.UTF-8
+export LC_COLLATE=C.UTF-8
+export LC_MESSAGES=C.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
