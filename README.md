@@ -3,12 +3,11 @@
 
 ### 0. init submodules
 
+    cd your/repository/path
     git submodule update --init
 
 
 ### 1. create symbolic links
-
-    cd your/repository/path
 
     dotfiles=zshrc,gitconfig,vimrc,vim#, ...
 
