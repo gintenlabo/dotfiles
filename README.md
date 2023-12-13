@@ -3,16 +3,13 @@
 
 ### 0. init submodules
 
+    cd your/repository/path
     git submodule update --init
 
 
 ### 1. create symbolic links
 
-    cd your/repository/path
-
-    dotfiles=zshrc,gitconfig,vimrc,vim#, ...
-
-    for file in `echo ${dotfiles//,/ }`; do
+    for file in `cat dotfiles`; do
       ln -sr ${file} ~/.${file}
     done
 
@@ -27,9 +24,12 @@
     # or use some editor (recommended)
 
 
-### 3. install Vundle
+### 3. setup vim
 
-Run Vim, enter:
+    mkdir ~/.vim-backup
+    mkdir ~/.vim-undo
+
+and run vim, enter:
 
     :PluginInstall
 
