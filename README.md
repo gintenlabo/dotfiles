@@ -1,6 +1,11 @@
 ## How to install
 
 
+### 0. init submodules
+
+    git submodule update --init
+
+
 ### 1. create symbolic links
 
     cd your/repository/path
@@ -14,13 +19,6 @@
 
 ### 2. local setting for git
 
-To enable include, install latest version of git:
-
-    sudo add-apt-repository ppa:git-core/ppa
-    sudo apt-get update && sudo apt-get upgrade
-
-then create your local gitconfig file:
-
     cat <<EOF >~/.gitconfig.local
     [user]
     	name = Your Name
@@ -31,9 +29,7 @@ then create your local gitconfig file:
 
 ### 3. install Vundle
 
-    git submodule update --init
-
-and run Vim, enter:
+ Run Vim, enter:
 
     :PluginInstall
 
