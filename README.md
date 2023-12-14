@@ -10,7 +10,7 @@
 ### 1. create symbolic links
 
     for file in `cat dotfiles`; do
-      ln -sr ${file} ~/.${file}
+      ln -srvbT ${file} ~/.${file}
     done
 
 
