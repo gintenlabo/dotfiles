@@ -5,11 +5,15 @@ cd "$(dirname "$0")"
 CMDNAME=$(basename "$0")
 print_usage() {
   cat - << EOF
-usage: ${CMDNAME} (-n|-x)
+usage: ${CMDNAME} (-n|-x) [-u <your name>] [-m <your.mail@example.com>]
     -n
         Executes dry run mode; don't actually do anything, just show what will be done.
     -x
         Executes install. This option must be specified if you want to install.
+    -u
+        Specify your git username. If not given, inputting from tty is required.
+    -m
+        Specify your git email address. If not given, inputting from tty is required.
 EOF
 }
 
