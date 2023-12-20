@@ -32,9 +32,6 @@ export CPLUS_INCLUDE_PATH=$BOOST_ROOT:$CPLUS_INCLUDE_PATH
 # pkg-config
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
 
-# macvim
-export PATH=$PATH:/Applications/MacVim.app/Contents/bin
-
 #clang tools
 export PATH=/usr/local/opt/llvm/bin:$PATH
 
