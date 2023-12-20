@@ -25,7 +25,7 @@ quote_each_args() {
   done
 }
 print_dry_run_message() {
-  echo "will exec '$*'"
+  echo -e "will exec '$*'"
 }
 run() {
   if [[ "${MODE}" == 'dry-run' ]]; then
@@ -56,7 +56,32 @@ for file in $(cat dotfiles); do
   run ln -srvbT "${file}" "${HOME}/.${file}"
 done
 
-# TODO: create .gitconfig.local file
+# create .gitconfig.local file
+LOCAL_GITCONFIG_FILENAME=.gitconfig.local
+# input name from tty
+read -p 'enter your name for git: ' NAME
+if [[ -z "$NAME" ]]; then
+  echo "warning: empty name given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
+fi
+# input email from tty
+read -p 'enter your email for git: ' EMAIL
+if [[ -z "$EMAIL" ]]; then
+  echo "warning: empty email given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
+fi
+# generate content and store
+generate_local_gitconfig_content() {
+  cat - << EOF
+[core]
+    name=${NAME}
+    email=${EMAIL}
+EOF
+}
+LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
+if [[ "${MODE}" == 'dry-run' ]]; then
+  print_dry_run_message "cat - << 'EOF' >~/${LOCAL_GITCONFIG_FILENAME}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
+else
+  echo "${LOCAL_GITCONFIG_CONTENT}" >~/${LOCAL_GITCONFIG_FILENAME}
+fi
 
 # setup vim
 run mkdir -p ~/.vim-backup
