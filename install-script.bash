@@ -67,36 +67,40 @@ done
 
 # create .gitconfig.local file
 LOCAL_GITCONFIG_FILENAME=.gitconfig.local
-# input name from tty
-if [[ -z "$NAME" ]]; then
-  tty -s && echo # insert empty line if input is tty
-  read -p 'enter your name for git: ' NAME
+if [[ -e "${HOME}/${LOCAL_GITCONFIG_FILENAME}" ]]; then
+  echo -e "\n~/${LOCAL_GITCONFIG_FILENAME} already exists; skipping..." >&2
+else
+  # input name from tty
   if [[ -z "$NAME" ]]; then
-    echo "warning: empty name given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
+    tty -s && echo # insert empty line if input is tty
+    read -p 'enter your name for git: ' NAME
+    if [[ -z "$NAME" ]]; then
+      echo "warning: empty name given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
+    fi
   fi
-fi
-# input email from tty
-if [[ -z "$EMAIL" ]]; then
-  tty -s && echo # insert empty line if input is tty
-  read -p 'enter your email for git: ' EMAIL
+  # input email from tty
   if [[ -z "$EMAIL" ]]; then
-    echo "warning: empty email given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
+    tty -s && echo # insert empty line if input is tty
+    read -p 'enter your email for git: ' EMAIL
+    if [[ -z "$EMAIL" ]]; then
+      echo "warning: empty email given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
+    fi
   fi
-fi
-# generate content and store
-echo
-generate_local_gitconfig_content() {
-  cat - << EOF
+  # generate content and store
+  echo
+  generate_local_gitconfig_content() {
+    cat - << EOF
 [core]
     name=${NAME}
     email=${EMAIL}
 EOF
-}
-LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
-if [[ "${MODE}" == 'dry-run' ]]; then
-  print_dry_run_message "cat - << 'EOF' >~/${LOCAL_GITCONFIG_FILENAME}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
-else
-  echo "${LOCAL_GITCONFIG_CONTENT}" >~/${LOCAL_GITCONFIG_FILENAME}
+  }
+  LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
+  if [[ "${MODE}" == 'dry-run' ]]; then
+    print_dry_run_message "cat - << 'EOF' >~/${LOCAL_GITCONFIG_FILENAME}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
+  else
+    echo "${LOCAL_GITCONFIG_CONTENT}" >~/${LOCAL_GITCONFIG_FILENAME}
+  fi
 fi
 
 # setup vim
