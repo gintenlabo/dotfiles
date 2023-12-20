@@ -16,12 +16,11 @@ EOF
 MODE=
 
 quote_each_args() {
-  local args=("$@")
-  for i in "${!args[@]}"; do
-    if [[ $i -lt $((${#args[@]} - 1)) ]]; then
-      printf '%q ' "${args[$i]}"
+  for i in $(seq 1 $#); do
+    if [[ $i -lt $# ]]; then
+      printf '%q ' "${!i}"
     else
-      printf '%q' "${args[$i]}"
+      printf '%q' "${!i}"
     fi
   done
 }
