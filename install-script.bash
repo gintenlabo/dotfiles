@@ -52,6 +52,7 @@ fi
 run git submodule update --init
 
 # create symbolic links
+echo
 for file in $(cat dotfiles); do
   run ln -srvbT "${file}" "${HOME}/.${file}"
 done
@@ -59,16 +60,19 @@ done
 # create .gitconfig.local file
 LOCAL_GITCONFIG_FILENAME=.gitconfig.local
 # input name from tty
+tty -s && echo # insert empty line if input is tty
 read -p 'enter your name for git: ' NAME
 if [[ -z "$NAME" ]]; then
   echo "warning: empty name given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
 fi
 # input email from tty
+tty -s && echo # insert empty line if input is tty
 read -p 'enter your email for git: ' EMAIL
 if [[ -z "$EMAIL" ]]; then
   echo "warning: empty email given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
 fi
 # generate content and store
+echo
 generate_local_gitconfig_content() {
   cat - << EOF
 [core]
@@ -84,6 +88,7 @@ else
 fi
 
 # setup vim
+echo
 run mkdir -p ~/.vim-backup
 run mkdir -p ~/.vim-undo
 run vim +PluginInstall +qall
