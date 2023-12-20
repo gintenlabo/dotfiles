@@ -24,9 +24,12 @@ quote_each_args() {
     fi
   done
 }
+print_dry_run_message() {
+  echo "will exec '$*'"
+}
 run() {
   if [[ "${MODE}" == 'dry-run' ]]; then
-    echo "will exec '$(quote_each_args "$@")'"
+    print_dry_run_message "$(quote_each_args "$@")"
   else
     "$@"
   fi
