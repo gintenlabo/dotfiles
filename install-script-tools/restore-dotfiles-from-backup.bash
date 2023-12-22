@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -ueo pipefail
+WORKDIR=$(pwd)
 cd "$(dirname "$0")"
 
 CMDNAME=$(basename "$0")
@@ -80,5 +81,5 @@ if [[ $# -eq 0 ]]; then
   done
   restore ~/.gitingore.local
 else
-  restore "$@"
+  (cd "${WORKDIR}" && restore "$@")
 fi
