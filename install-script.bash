@@ -66,16 +66,16 @@ for file in $(cat dotfiles); do
 done
 
 # create .gitconfig.local file
-LOCAL_GITCONFIG_FILENAME=.gitconfig.local
-if [[ -e "${HOME}/${LOCAL_GITCONFIG_FILENAME}" ]]; then
-  echo -e "\n~/${LOCAL_GITCONFIG_FILENAME} already exists; skipping..." >&2
+LOCAL_GITCONFIG_PATH="${HOME}/.gitconfig.local"
+if [[ -e "${LOCAL_GITCONFIG_PATH}" ]]; then
+  echo -e "\n${LOCAL_GITCONFIG_PATH} already exists; skipping..." >&2
 else
   # input name from tty
   if [[ -z "$NAME" ]]; then
     tty -s && echo # insert empty line if input is tty
     read -p 'enter your name for git: ' NAME
     if [[ -z "$NAME" ]]; then
-      echo "warning: empty name given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
+      echo "warning: empty name given. please edit ${LOCAL_GITCONFIG_PATH} after installing." >&2
     fi
   fi
   # input email from tty
@@ -83,7 +83,7 @@ else
     tty -s && echo # insert empty line if input is tty
     read -p 'enter your email for git: ' EMAIL
     if [[ -z "$EMAIL" ]]; then
-      echo "warning: empty email given. please edit ~/${LOCAL_GITCONFIG_FILENAME} after installing." >&2
+      echo "warning: empty email given. please edit ${LOCAL_GITCONFIG_PATH} after installing." >&2
     fi
   fi
   # generate content and store
@@ -97,9 +97,9 @@ EOF
   }
   LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
   if [[ "${MODE}" == 'dry-run' ]]; then
-    print_dry_run_message "cat - << 'EOF' >~/${LOCAL_GITCONFIG_FILENAME}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
+    print_dry_run_message "cat - << 'EOF' >${LOCAL_GITCONFIG_PATH}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
   else
-    echo "${LOCAL_GITCONFIG_CONTENT}" >~/${LOCAL_GITCONFIG_FILENAME}
+    echo "${LOCAL_GITCONFIG_CONTENT}" >"${LOCAL_GITCONFIG_PATH}"
   fi
 fi
 
