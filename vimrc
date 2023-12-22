@@ -9,24 +9,25 @@ endif
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
 
 "packages
-Bundle 'flazz/vim-colorschemes'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'tpope/vim-rails'
-Bundle 'thinca/vim-quickrun'
-Bundle 'tyru/open-browser.vim'
-Bundle 'jtratner/vim-flavored-markdown'
-Bundle 'tpope/vim-fugitive'
-Bundle 'gregsexton/gitv'
-Bundle 'vim-jp/cpp-vim'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'editorconfig/editorconfig-vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'tpope/vim-rails'
+Plugin 'thinca/vim-quickrun'
+Plugin 'tyru/open-browser.vim'
+Plugin 'jtratner/vim-flavored-markdown'
+Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
+Plugin 'vim-jp/cpp-vim'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'editorconfig/editorconfig-vim'
 
+call vundle#end()
 filetype plugin indent on
 "vundle plugins end
 
