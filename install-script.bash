@@ -79,7 +79,7 @@ else
     tty -s && echo # insert empty line if input is tty
     read -p 'enter your name for git: ' NAME
     if [[ -z "$NAME" ]]; then
-      echo "warning: empty name given. please edit ${LOCAL_GITCONFIG_PATH} after installing." >&2
+      echo "warning: empty name given. please edit ${LOCAL_GITCONFIG_PATH} after installation." >&2
     fi
   fi
   # input email from tty
@@ -87,7 +87,7 @@ else
     tty -s && echo # insert empty line if input is tty
     read -p 'enter your email for git: ' EMAIL
     if [[ -z "$EMAIL" ]]; then
-      echo "warning: empty email given. please edit ${LOCAL_GITCONFIG_PATH} after installing." >&2
+      echo "warning: empty email given. please edit ${LOCAL_GITCONFIG_PATH} after installation." >&2
     fi
   fi
   # generate content and store
