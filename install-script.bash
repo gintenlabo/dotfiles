@@ -41,11 +41,16 @@ quote_each_args() {
 print_dry_run_message() {
   echo -e "will exec '$*'"
 }
+print_executing_message() {
+  echo -e "executing '$*'..."
+}
 run() {
   if [[ "${MODE}" == 'dry-run' ]]; then
     print_dry_run_message "$(quote_each_args "$@")"
   else
+    print_executing_message "$(quote_each_args "$@")"
     "$@"
+    echo 'done.'
   fi
 }
 
@@ -110,10 +115,13 @@ EOF
   if [[ -e "${LOCAL_GITCONFIG_PATH}" ]]; then
     run mv -T "${LOCAL_GITCONFIG_PATH}" "${LOCAL_GITCONFIG_PATH}${BACKUP_SUFFIX}"
   fi
+  LOCAL_GITCONFIG_CREATION_COMMAND="cat - << 'EOF' >${LOCAL_GITCONFIG_PATH}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
   if [[ "${MODE}" == 'dry-run' ]]; then
-    print_dry_run_message "cat - << 'EOF' >${LOCAL_GITCONFIG_PATH}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
+    print_dry_run_message "${LOCAL_GITCONFIG_CREATION_COMMAND}"
   else
+    print_executing_message "${LOCAL_GITCONFIG_CREATION_COMMAND}"
     echo "${LOCAL_GITCONFIG_CONTENT}" >"${LOCAL_GITCONFIG_PATH}"
+    echo 'done.'
   fi
 fi
 

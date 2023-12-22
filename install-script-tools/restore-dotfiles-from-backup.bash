@@ -39,11 +39,16 @@ quote_each_args() {
 print_dry_run_message() {
   echo -e "will exec '$*'"
 }
+print_executing_message() {
+  echo -e "executing '$*'..."
+}
 run() {
   if [[ "${MODE}" == 'dry-run' ]]; then
     print_dry_run_message "$(quote_each_args "$@")"
   else
+    print_executing_message "$(quote_each_args "$@")"
     "$@"
+    echo 'done.'
   fi
 }
 restore() {
