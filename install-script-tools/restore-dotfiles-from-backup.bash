@@ -84,7 +84,7 @@ if [[ $# -eq 0 ]]; then
   ./ls-linking-files.bash | while read -r filename; do
     restore "${HOME}/.${filename}"
   done
-  restore ~/.gitingore.local
+  restore ~/.gitconfig.local
 else
   (cd "${WORKDIR}" && restore "$@")
 fi
