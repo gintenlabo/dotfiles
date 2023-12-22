@@ -5,11 +5,13 @@ cd "$(dirname "$0")"
 CMDNAME=$(basename "$0")
 print_usage() {
   cat - << EOF
-usage: ${CMDNAME} (-n|-x) [-u <your name>] [-m <your.mail@example.com>]
+usage: ${CMDNAME} (-n|-x) [-o] [-u <your name>] [-m <your.mail@example.com>]
     -n
         Executes dry run mode; don't actually do anything, just show what will be done.
     -x
         Executes install. This option must be specified if you want to install.
+    -o
+        Overwrites existing ~/.gitconfig.local with backup (~/.gitconfig.local~).
     -u
         Specify your git username. If not given, inputting from tty is required.
     -m
@@ -20,6 +22,7 @@ EOF
 MODE=
 NAME=
 EMAIL=
+OVERWRITE=
 
 quote_each_args() {
   for i in $(seq 1 $#); do
@@ -41,12 +44,13 @@ run() {
   fi
 }
 
-while getopts 'nxu:m:' opt; do
+while getopts 'nxou:m:' opt; do
   case $opt in
     n) MODE='dry-run' ;;
     x) MODE='execute' ;;
     u) NAME="$OPTARG" ;;
     m) EMAIL="$OPTARG" ;;
+    o) OVERWRITE='on' ;;
     *) print_usage >&2
        exit 1 ;;
   esac
@@ -67,7 +71,7 @@ done
 
 # create .gitconfig.local file
 LOCAL_GITCONFIG_PATH="${HOME}/.gitconfig.local"
-if [[ -e "${LOCAL_GITCONFIG_PATH}" ]]; then
+if [[ -z "${OVERWRITE}" && -e "${LOCAL_GITCONFIG_PATH}" ]]; then
   echo -e "\n${LOCAL_GITCONFIG_PATH} already exists; skipping..." >&2
 else
   # input name from tty
@@ -96,6 +100,10 @@ else
 EOF
   }
   LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
+  # if there is ~/.gitconfig.local already, create backup
+  if [[ -e "${LOCAL_GITCONFIG_PATH}" ]]; then
+    run mv -T "${LOCAL_GITCONFIG_PATH}" "${LOCAL_GITCONFIG_PATH}~"
+  fi
   if [[ "${MODE}" == 'dry-run' ]]; then
     print_dry_run_message "cat - << 'EOF' >${LOCAL_GITCONFIG_PATH}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
   else
