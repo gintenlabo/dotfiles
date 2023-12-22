@@ -5,16 +5,20 @@ cd "$(dirname "$0")"
 CMDNAME=$(basename "$0")
 print_usage() {
   cat - << EOF
-usage: ${CMDNAME} (-n|-x) [-o] [-u <your name>] [-m <your.mail@example.com>]
+usage: ${CMDNAME} (-n|-x) [options...]
     -n
         Executes dry run mode; don't actually do anything, just show what will be done.
     -x
         Executes install. This option must be specified if you want to install.
     -o
-        Overwrites existing ~/.gitconfig.local with backup (~/.gitconfig.local~).
-    -u
+        Overwrites existing ~/.gitconfig.local with backup (~/.gitconfig.local~ if backup suffix is '~').
+    -S <suffix>
+        Specify backup suffix.
+        If not given, BACKUP_SUFFIX is used; neither is given, '~' is used.
+        This argument cannot be empty string.
+    -u <your name>
         Specify your git username. If not given, inputting from tty is required.
-    -m
+    -m <your-email.example.com>
         Specify your git email address. If not given, inputting from tty is required.
 EOF
 }
@@ -45,10 +49,11 @@ run() {
   fi
 }
 
-while getopts 'nxou:m:' opt; do
+while getopts 'nxoS:u:m:' opt; do
   case $opt in
     n) MODE='dry-run' ;;
     x) MODE='execute' ;;
+    S) BACKUP_SUFFIX="$OPTARG" ;;
     u) NAME="$OPTARG" ;;
     m) EMAIL="$OPTARG" ;;
     o) OVERWRITE='on' ;;
@@ -56,7 +61,7 @@ while getopts 'nxou:m:' opt; do
        exit 1 ;;
   esac
 done
-if [[ -z "${MODE}" ]]; then
+if [[ -z "${MODE}" || -z "${BACKUP_SUFFIX}" ]]; then
   print_usage >&2
   exit 1
 fi

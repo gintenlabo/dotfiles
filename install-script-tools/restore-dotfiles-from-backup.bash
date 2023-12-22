@@ -12,6 +12,10 @@ usage: ${CMDNAME} (-n|-x) [options...] [files...]
         Executes restoration. This option must be specified if you want to restore.
     -d
         Deletes given file if no backup found.
+    -S <suffix>
+        Specify backup suffix.
+        If not given, BACKUP_SUFFIX is used; neither is given, '~' is used.
+        This argument cannot be empty string.
     files
         Specify file paths to restore.
         If not given, files would be linked by install-script and ~/.gitconfig.local is restored.
@@ -53,16 +57,17 @@ restore() {
   done
 }
 
-while getopts 'nxd' opt; do
+while getopts 'nxS:d' opt; do
   case $opt in
     n) MODE='dry-run' ;;
     x) MODE='execute' ;;
+    S) BACKUP_SUFFIX="$OPTARG" ;;
     d) DELETE='on' ;;
     *) print_usage >&2
        exit 1 ;;
   esac
 done
-if [[ -z "${MODE}" ]]; then
+if [[ -z "${MODE}" || -z "${BACKUP_SUFFIX}" ]]; then
   print_usage >&2
   exit 1
 fi
