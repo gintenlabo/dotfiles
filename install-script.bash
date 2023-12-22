@@ -66,7 +66,7 @@ run git submodule update --init
 
 # create symbolic links
 echo
-for file in $(cat dotfiles); do
+./install-script-tools/ls-linking-files.bash | while read -r file; do
   run ln -srvb -S "${BACKUP_SUFFIX}" -T "${file}" "${HOME}/.${file}"
 done
 
