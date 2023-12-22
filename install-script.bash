@@ -107,4 +107,4 @@ fi
 echo
 run mkdir -p ~/.vim-backup
 run mkdir -p ~/.vim-undo
-run vim +PluginInstall +qall
+run vim --cmd 'let g:onInitialSetup=1' +PluginInstall +qall
