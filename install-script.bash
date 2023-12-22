@@ -23,6 +23,7 @@ MODE=
 NAME=
 EMAIL=
 OVERWRITE=
+BACKUP_SUFFIX=${BACKUP_SUFFIX:-\~}
 
 quote_each_args() {
   for i in $(seq 1 $#); do
@@ -66,7 +67,7 @@ run git submodule update --init
 # create symbolic links
 echo
 for file in $(cat dotfiles); do
-  run ln -srvbT "${file}" "${HOME}/.${file}"
+  run ln -srvb -S "${BACKUP_SUFFIX}" -T "${file}" "${HOME}/.${file}"
 done
 
 # create .gitconfig.local file
@@ -102,7 +103,7 @@ EOF
   LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
   # if there is ~/.gitconfig.local already, create backup
   if [[ -e "${LOCAL_GITCONFIG_PATH}" ]]; then
-    run mv -T "${LOCAL_GITCONFIG_PATH}" "${LOCAL_GITCONFIG_PATH}~"
+    run mv -T "${LOCAL_GITCONFIG_PATH}" "${LOCAL_GITCONFIG_PATH}${BACKUP_SUFFIX}"
   fi
   if [[ "${MODE}" == 'dry-run' ]]; then
     print_dry_run_message "cat - << 'EOF' >${LOCAL_GITCONFIG_PATH}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
