@@ -105,7 +105,7 @@ else
   echo
   generate_local_gitconfig_content() {
     cat - << EOF
-[core]
+[user]
     name = ${NAME}
     email = ${EMAIL}
 EOF
