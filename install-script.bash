@@ -91,8 +91,8 @@ else
   generate_local_gitconfig_content() {
     cat - << EOF
 [core]
-    name=${NAME}
-    email=${EMAIL}
+    name = ${NAME}
+    email = ${EMAIL}
 EOF
   }
   LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
