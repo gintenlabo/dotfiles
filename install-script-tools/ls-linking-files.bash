@@ -32,16 +32,16 @@ remove_directory_contents() {
   cat - | sed 's/\/.*//g' | sort -u
 }
 
-TRACKED_FILES=$(git ls-files -c | grep -v '^\.' | remove_directory_contents)
+TRACKED_FILES=$(git ls-files -c | grep -v '^\.')
 if [[ -n "${VERBOSE}" ]]; then
   echo "tracked files:" >&2
   echo -e "${TRACKED_FILES}\n" >&2
 fi
 
-IGNORED_FILES=$(git ls-files -ic --exclude-from="${LINK_IGNORE}" | remove_directory_contents)
+IGNORED_FILES=$(git ls-files -ic --exclude-from="${LINK_IGNORE}")
 if [[ -n "${VERBOSE}" ]]; then
   echo "ignored files:" >&2
   echo -e "${IGNORED_FILES}\n" >&2
 fi
 
-echo "${TRACKED_FILES}" | grep -vxFf <(echo "${IGNORED_FILES}")
+echo "${TRACKED_FILES}" | grep -vxFf <(echo "${IGNORED_FILES}") | remove_directory_contents
