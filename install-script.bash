@@ -53,6 +53,22 @@ run() {
     echo 'done.'
   fi
 }
+backup() {
+  if [[ "$#" -ne 1 ]]; then
+    echo "assertion failed: invalid argument count for backup(); expected 1, got $#." >&2
+    exit -1
+  fi
+  local path="$1"
+  if [[ -e "${path}" ]]; then
+    local backup_path="${path}${BACKUP_SUFFIX}"
+    if [[ -e "${backup_path}" ]]; then
+      echo "error: backup file for path '${path}' ('${backup_path}') already exists." >&2
+      echo "aborting..." >&2
+      exit 1
+    fi
+    run mv "${path}" "${backup_path}"
+  fi
+}
 
 while getopts 'nxoS:u:m:' opt; do
   case $opt in
@@ -77,7 +93,9 @@ run git submodule update --init
 # create symbolic links
 echo
 ./install-script-tools/ls-linking-files.bash | while read -r file; do
-  run ln -srvb -S "${BACKUP_SUFFIX}" -T "${file}" "${HOME}/.${file}"
+  DOTFILE_PATH="${HOME}/.${file}"
+  backup "${DOTFILE_PATH}"
+  run ln -srvT "${file}" "${DOTFILE_PATH}"
 done
 
 # create .gitconfig.local file
@@ -111,10 +129,8 @@ else
 EOF
   }
   LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
-  # if there is ~/.gitconfig.local already, create backup
-  if [[ -e "${LOCAL_GITCONFIG_PATH}" ]]; then
-    run mv -T "${LOCAL_GITCONFIG_PATH}" "${LOCAL_GITCONFIG_PATH}${BACKUP_SUFFIX}"
-  fi
+  # backup if there is ~/.gitconfig.local already
+  backup "${LOCAL_GITCONFIG_PATH}"
   LOCAL_GITCONFIG_CREATION_COMMAND="cat - << 'EOF' >${LOCAL_GITCONFIG_PATH}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
   if [[ "${MODE}" == 'dry-run' ]]; then
     print_dry_run_message "${LOCAL_GITCONFIG_CREATION_COMMAND}"

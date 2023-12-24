@@ -56,7 +56,7 @@ restore() {
     local backup="${file}${BACKUP_SUFFIX}"
     if [[ -e "${backup}" ]]; then
       run rm -f "${file}"
-      run mv -T "${backup}" "${file}"
+      run mv "${backup}" "${file}"
     elif [[ -n "${DELETE}" ]]; then
       run rm -f "${file}"
     fi
