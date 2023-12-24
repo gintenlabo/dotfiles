@@ -1,44 +1,20 @@
 ## How to install
 
+First, install homebrew and coreutils
 
-### 1. create symbolic links
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install coreutils
 
-    cd your/repository/path
+for `realpath` command in install script.
 
-    dotfiles=zshrc,gitconfig,vimrc,vim#, ...
+Then run
 
-    for file in `echo ${dotfiles//,/ }`; do
-      ln -sr ${file} ~/.${file}
-    done
+    ./install-script.bash -n -u 'Your Name' -m 'your-address@example.com'
 
+to show executed commands.
 
-### 2. local setting for git
+If no problem found, then run
 
-To enable include, install latest version of git:
+    ./install-script.bash -x -u 'Your Name' -m 'your-address@example.com'
 
-    sudo add-apt-repository ppa:git-core/ppa
-    sudo apt-get update && sudo apt-get upgrade
-
-then create your local gitconfig file:
-
-    cat <<EOF >~/.gitconfig.local
-    [user]
-    	name = Your Name
-    	email = your-address@example.com
-    EOF
-    # or use some editor (recommended)
-
-
-### 3. install Vundle
-
-    git submodule update --init
-
-and run Vim, enter:
-
-    :PluginInstall
-
-
----
-## To do
-
-- Write install script
+to install.

@@ -31,6 +31,14 @@ call vundle#end()
 filetype plugin indent on
 "vundle plugins end
 
+
+" install-script.bash からの起動時は Vundle のインストールだけするので、ここ以降は不要
+if exists('g:onInitialSetup') && g:onInitialSetup
+  " 実行を中断する
+  finish
+endif
+
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
