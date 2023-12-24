@@ -25,7 +25,7 @@ EOF
 
 MODE=
 DELETE=
-BACKUP_SUFFIX=${BACKUP_SUFFIX:-\~}
+BACKUP_SUFFIX="${BACKUP_SUFFIX:-"~"}"
 
 quote_each_args() {
   for i in $(seq 1 $#); do
