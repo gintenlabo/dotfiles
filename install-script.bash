@@ -93,7 +93,9 @@ run git submodule update --init
 # create symbolic links
 echo
 ./install-script-tools/ls-linking-files.bash | while read -r file; do
-  run ln -srvb -S "${BACKUP_SUFFIX}" -T "${file}" "${HOME}/.${file}"
+  DOTFILE_PATH="${HOME}/.${file}"
+  backup "${DOTFILE_PATH}"
+  run ln -srvT "${file}" "${DOTFILE_PATH}"
 done
 
 # create .gitconfig.local file
