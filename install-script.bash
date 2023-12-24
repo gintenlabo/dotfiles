@@ -113,7 +113,7 @@ EOF
   LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
   # if there is ~/.gitconfig.local already, create backup
   if [[ -e "${LOCAL_GITCONFIG_PATH}" ]]; then
-    run mv -T "${LOCAL_GITCONFIG_PATH}" "${LOCAL_GITCONFIG_PATH}${BACKUP_SUFFIX}"
+    run mv "${LOCAL_GITCONFIG_PATH}" "${LOCAL_GITCONFIG_PATH}${BACKUP_SUFFIX}"
   fi
   LOCAL_GITCONFIG_CREATION_COMMAND="cat - << 'EOF' >${LOCAL_GITCONFIG_PATH}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
   if [[ "${MODE}" == 'dry-run' ]]; then
