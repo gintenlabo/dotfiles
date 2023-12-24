@@ -1,6 +1,13 @@
 ## How to install
 
-Run
+First, install homebrew and coreutils
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    brew install coreutils
+
+for `realpath` command in install script.
+
+Then run
 
     ./install-script.bash -n -u 'Your Name' -m 'your-address@example.com'
 
