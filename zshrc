@@ -2,13 +2,13 @@
 find-grep () { find . -type f -print | xargs grep -n --binary-files=without-match $@ }
 
 # エイリアスの設定
-alias ls='ls --color=auto'
+alias ls='ls -G'
 alias ll='ls -ltr'
 alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
-alias o=xdg-open
+alias o=open
 alias v=vim
 alias vi=vim
-alias e=vim
+alias e=mvim
 
 alias g++03='g++ -std=gnu++03 -Wall -Wextra'
 alias g++0x='g++ -std=gnu++0x -Wall -Wextra'
@@ -32,7 +32,7 @@ setopt PROMPT_SUBST
 case "${TERM}" in
 kterm*|xterm*)
   precmd() {
-    echo -ne "\033]0;Terminal: ${PWD/#$HOME/~}\007"
+    echo -ne "\033]0;${PWD/#$HOME/~}\007"
   }
 esac
 

@@ -31,3 +31,11 @@ export CPLUS_INCLUDE_PATH=$BOOST_ROOT:$CPLUS_INCLUDE_PATH
 
 # pkg-config
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
+
+#clang tools
+export PATH=/usr/local/opt/llvm/bin:$PATH
+
+#react native
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
