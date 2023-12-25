@@ -1,17 +1,7 @@
-# 文字コードの設定
-export LANG=ja_JP.UTF-8
-
-# ホスト名
-export HOSTNAME=`hostname`
-
-# パスの設定
 export PATH="$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export    LIBRARY_PATH="/usr/local/lib"
 export LD_LIBRARY_PATH="/usr/local/lib"
-
-# エディタ設定
-export EDITOR=vim
 
 # rvm
 export PATH=$PATH:$HOME/.rvm/bin
