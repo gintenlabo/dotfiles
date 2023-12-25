@@ -54,6 +54,11 @@ ZSH_THEME="robbyrussell"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# custom HISTFILE settings
+HISTFILE=~/.histfile
+HISTSIZE=100000
+SAVEHIST=100000
+
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
@@ -78,6 +83,9 @@ source $ZSH/oh-my-zsh.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+# rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -99,3 +107,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias o=xdg-open
+alias v=vim
+alias vi=vim
+alias e=vim
