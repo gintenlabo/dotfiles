@@ -80,6 +80,7 @@ source $ZSH/oh-my-zsh.sh
 export HOSTNAME=`hostname`
 export EDITOR=vim
 export PAGER="less -FRX"
+export LESS="-RWMgi"
 export LESSCHARSET=utf-8
 
 # You may need to manually set your language environment
