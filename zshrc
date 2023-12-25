@@ -54,6 +54,11 @@ ZSH_THEME="dst-improved"
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# custom HISTFILE settings
+# HISTFILE=~/.histfile
+HISTSIZE=100000
+SAVEHIST=100000
+
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
