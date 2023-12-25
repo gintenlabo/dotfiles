@@ -1,4 +1,5 @@
 # If you come from bash you might have to change your $PATH.
+# for commands installed by pip
 export PATH="$PATH:$HOME/.local/bin"
 
 # Path to your oh-my-zsh installation.
