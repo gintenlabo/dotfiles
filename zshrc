@@ -84,6 +84,9 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 export HOSTNAME=`hostname`
 export EDITOR=vim
+export PAGER="less -FRX"
+export LESS="-RWMgi"
+export LESSCHARSET=utf-8
 
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
