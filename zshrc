@@ -1,130 +1,101 @@
-# 関数
-find-grep () { find . -type f -print | xargs grep -n --binary-files=without-match $@ }
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# エイリアスの設定
-alias ls='ls --color=auto'
-alias ll='ls -ltr'
-alias gd='dirs -v; echo -n "select number: "; read newdir; cd +"$newdir"'
-alias o=xdg-open
-alias v=vim
-alias vi=vim
-alias e=vim
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-alias g++03='g++ -std=gnu++03 -Wall -Wextra'
-alias g++0x='g++ -std=gnu++0x -Wall -Wextra'
-alias g++11='g++ -std=gnu++11 -Wall -Wextra'
-alias g++1y='g++ -std=gnu++1y -Wall -Wextra'
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# プロンプトの設定
-local GREEN=$'%{\e[1;32m%}'
-local BLUE=$'%{\e[1;34m%}'
-local DEFAULT=$'%{\e[1;m%}'
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-PROMPT=$BLUE'[${USER}@${HOSTNAME}] %(!.#.$) '$DEFAULT
-RPROMPT=$GREEN'[%~]'$DEFAULT
-setopt PROMPT_SUBST
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-# ターミナルの設定
-case "${TERM}" in
-kterm*|xterm*)
-  precmd() {
-    echo -ne "\033]0;Terminal: ${PWD/#$HOME/~}\007"
-  }
-esac
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
 
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
-# ヒストリの設定
-HISTFILE=~/.histfile
-HISTSIZE=100000
-SAVEHIST=100000
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-# 履歴ファイルに時刻を記録
-setopt extended_history
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Ctrl+r による補完を有効化
-bindkey -e
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-# 補完するかの質問は画面を超える時にのみに行う
-LISTMAX=0
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
 
-# 補完を有効化
-autoload -Uz compinit; compinit
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# sudo でも補完の対象
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
 
-# cdのタイミングで自動的にpushd
-setopt auto_pushd
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# 複数の zsh を同時に使う時など history ファイルに上書きせず追加
-setopt append_history
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
 
-# 補完候補が複数ある時に、一覧表示
-setopt auto_list
+source $ZSH/oh-my-zsh.sh
 
-# 保管結果をできるだけ詰める
-setopt list_packed
+# User configuration
 
-# 補完キー（Tab, Ctrl+I) を連打するだけで順に補完候補を自動で補完
-setopt auto_menu
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# カッコの対応などを自動的に補完
-setopt auto_param_keys
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
-setopt auto_param_slash
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-# ビープ音を鳴らさないようにする
-setopt no_beep
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# 直前と同じコマンドラインはヒストリに追加しない
-setopt hist_ignore_dups
-
-# ヒストリにhistoryコマンドを記録しない
-setopt hist_no_store
-
-# 余分なスペースを削除してヒストリに記録する
-setopt hist_reduce_blanks
-
-# 行頭がスペースで始まるコマンドラインはヒストリに記録しない
-# setopt hist_ignore_spece
-
-# 重複したヒストリは追加しない
-# setopt hist_ignore_all_dups
-
-# ヒストリを呼び出してから実行する間に一旦編集できる状態になる
-setopt hist_verify
-
-# auto_list の補完候補一覧で、ls -F のようにファイルの種別をマーク表示しない
-setopt no_list_types
-
-# コマンドラインの引数で --prefix=/usr などの = 以降でも補完できる
-setopt magic_equal_subst
-
-# ファイル名の展開でディレクトリにマッチした場合末尾に / を付加する
-setopt mark_dirs
-
-# 8 ビット目を通すようになり、日本語のファイル名を表示可能
-setopt print_eight_bit
-
-# シェルのプロセスごとに履歴を共有
-setopt share_history
-
-# Ctrl+wで､直前の/までを削除する
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
-
-# ディレクトリを水色にする｡
-export LS_COLORS='di=01;36'
-
-# ファイルリスト補完でもlsと同様に色をつける
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-# ディレクトリ名だけで､ディレクトリの移動をする
-setopt auto_cd
-
-# C-s, C-qを無効にする
-setopt no_flow_control
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
