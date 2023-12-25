@@ -3,12 +3,6 @@ export MANPATH=/usr/local/share/man:/usr/local/man:/usr/share/man
 export    LIBRARY_PATH="/usr/local/lib"
 export LD_LIBRARY_PATH="/usr/local/lib"
 
-# rvm
-export PATH=$PATH:$HOME/.rvm/bin
-
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
 # cabal
 export PATH=$HOME/.cabal/bin:$PATH
 

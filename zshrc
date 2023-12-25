@@ -75,7 +75,7 @@ ZSH_CUSTOM="$HOME/.oh-my-zsh-custom"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git asdf)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -87,9 +87,6 @@ export EDITOR=vim
 export PAGER="less -FRX"
 export LESS="-RWMgi"
 export LESSCHARSET=utf-8
-
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # You may need to manually set your language environment
 export LANG=ja_JP.UTF-8
