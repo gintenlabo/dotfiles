@@ -112,9 +112,12 @@ export LC_MESSAGES=C.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias e=idea64.exe
 open() {
   for file in "$@"; do
     powershell.exe /c start "$(wslpath -w "$file")"
   done
 }
+alias o=open
+alias v=vim
+alias vi=vim
+alias e=idea64.exe
