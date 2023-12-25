@@ -2,7 +2,7 @@
 set -ueo pipefail
 cd "$(dirname "$0")"
 
-CMDNAME=$(basename "$0")
+CMDNAME="$(basename "$0")"
 print_usage() {
   cat - << EOF
 usage: ${CMDNAME} (-n|-x) [options...]
@@ -27,7 +27,7 @@ MODE=
 NAME=
 EMAIL=
 OVERWRITE=
-BACKUP_SUFFIX=${BACKUP_SUFFIX:-\~}
+BACKUP_SUFFIX="${BACKUP_SUFFIX:-"~"}"
 
 quote_each_args() {
   for i in $(seq 1 $#); do
@@ -56,7 +56,7 @@ run() {
 backup() {
   if [[ "$#" -ne 1 ]]; then
     echo "assertion failed: invalid argument count for backup(); expected 1, got $#." >&2
-    exit -1
+    exit 255
   fi
   local path="$1"
   if [[ -e "${path}" ]]; then
@@ -128,10 +128,10 @@ else
     email = ${EMAIL}
 EOF
   }
-  LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
+  LOCAL_GITCONFIG_CONTENT="$(generate_local_gitconfig_content)"
   # backup if there is ~/.gitconfig.local already
   backup "${LOCAL_GITCONFIG_PATH}"
-  LOCAL_GITCONFIG_CREATION_COMMAND="cat - << 'EOF' >${LOCAL_GITCONFIG_PATH}\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
+  LOCAL_GITCONFIG_CREATION_COMMAND="cat - << 'EOF' >$(printf '%q' "${LOCAL_GITCONFIG_PATH}")\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
   if [[ "${MODE}" == 'dry-run' ]]; then
     print_dry_run_message "${LOCAL_GITCONFIG_CREATION_COMMAND}"
   else
