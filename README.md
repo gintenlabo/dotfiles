@@ -1,45 +1,13 @@
 ## How to install
 
+Run
 
-### 0. init submodules
+    ./install-script.bash -n -u 'Your Name' -m 'your-address@example.com'
 
-    cd your/repository/path
-    git submodule update --init
+to show executed commands.
 
+If no problem found, then run
 
-### 1. create symbolic links
+    ./install-script.bash -x -u 'Your Name' -m 'your-address@example.com'
 
-    for file in `cat dotfiles`; do
-      ln -srvbT ${file} ~/.${file}
-    done
-
-
-### 2. local setting for git
-
-    cat <<EOF >~/.gitconfig.local
-    [user]
-    	name = Your Name
-    	email = your-address@example.com
-    EOF
-    # or use some editor (recommended)
-
-
-### 3. setup vim
-
-    mkdir ~/.vim-backup
-    mkdir ~/.vim-undo
-
-and run vim, enter:
-
-    :PluginInstall
-
-
-### 4. compile locale
-
-    sudo localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
-
-
----
-## To do
-
-- Write install script
+to install.
