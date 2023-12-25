@@ -88,9 +88,6 @@ export PAGER="less -FRX"
 export LESS="-RWMgi"
 export LESSCHARSET=utf-8
 
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 # You may need to manually set your language environment
 export LANG=ja_JP.UTF-8
 
