@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -ueo pipefail
-WORKDIR=$(pwd)
+WORKDIR="$(pwd)"
 cd "$(dirname "$0")"
 
-CMDNAME=$(basename "$0")
+CMDNAME="$(basename "$0")"
 print_usage() {
   cat - << EOF
 usage: ${CMDNAME} (-n|-x) [options...] [files...]

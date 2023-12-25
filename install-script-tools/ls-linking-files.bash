@@ -5,7 +5,7 @@ cd "$(dirname "$0")/.." # move to project root
 
 LINK_IGNORE="${LINK_IGNORE:-.linkignore}"
 
-CMDNAME=$(basename "$0")
+CMDNAME="$(basename "$0")"
 print_usage() {
   cat - << EOF
 usage: ${CMDNAME} [options...]
@@ -32,13 +32,13 @@ remove_directory_contents() {
   cat - | sed 's/\/.*//g' | sort -u
 }
 
-TRACKED_FILES=$(git ls-files -c | grep -v '^\.')
+TRACKED_FILES="$(git ls-files -c | grep -v '^\.')"
 if [[ -n "${VERBOSE}" ]]; then
   echo "tracked files:" >&2
   echo -e "${TRACKED_FILES}\n" >&2
 fi
 
-IGNORED_FILES=$(git ls-files -ic --exclude-from="${LINK_IGNORE}")
+IGNORED_FILES="$(git ls-files -ic --exclude-from="${LINK_IGNORE}")"
 if [[ -n "${VERBOSE}" ]]; then
   echo "ignored files:" >&2
   echo -e "${IGNORED_FILES}\n" >&2

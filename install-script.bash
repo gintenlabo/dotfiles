@@ -2,7 +2,7 @@
 set -ueo pipefail
 cd "$(dirname "$0")"
 
-CMDNAME=$(basename "$0")
+CMDNAME="$(basename "$0")"
 print_usage() {
   cat - << EOF
 usage: ${CMDNAME} (-n|-x) [options...]
@@ -128,7 +128,7 @@ else
     email = ${EMAIL}
 EOF
   }
-  LOCAL_GITCONFIG_CONTENT=$(generate_local_gitconfig_content)
+  LOCAL_GITCONFIG_CONTENT="$(generate_local_gitconfig_content)"
   # backup if there is ~/.gitconfig.local already
   backup "${LOCAL_GITCONFIG_PATH}"
   LOCAL_GITCONFIG_CREATION_COMMAND="cat - << 'EOF' >$(printf '%q' "${LOCAL_GITCONFIG_PATH}")\n${LOCAL_GITCONFIG_CONTENT}\nEOF"
