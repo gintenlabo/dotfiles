@@ -3,7 +3,7 @@ set -ueo pipefail
 
 cd "$(dirname "$0")/.." # move to project root
 
-LINK_IGNORE=${LINK_IGNORE:-.linkignore}
+LINK_IGNORE="${LINK_IGNORE:-.linkignore}"
 
 CMDNAME=$(basename "$0")
 print_usage() {
