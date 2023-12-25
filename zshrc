@@ -112,7 +112,7 @@ export LANG=ja_JP.UTF-8
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias o=xdg-open
+alias o=open
 alias v=vim
 alias vi=vim
-alias e=vim
+alias e=mvim
