@@ -56,7 +56,7 @@ run() {
 backup() {
   if [[ "$#" -ne 1 ]]; then
     echo "assertion failed: invalid argument count for backup(); expected 1, got $#." >&2
-    exit -1
+    exit 255
   fi
   local path="$1"
   if [[ -e "${path}" ]]; then
