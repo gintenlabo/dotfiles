@@ -7,6 +7,7 @@
 	current-branch = "branch --show-current"
 	current-rev = "rev-parse --short HEAD"
 	current-rev-full = "rev-parse HEAD"
+	push-current = "-c push.default='current' push"
 	mg = "merge --no-ff"
 	ff = "merge --ff --ff-only"
 	fa = "fetch --all"
