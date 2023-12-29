@@ -5,6 +5,8 @@
 	excludesfile = ~/.gitignore_global
 [alias]
 	current-branch = "branch --show-current"
+	mg = "merge --no-ff"
+	ff = "merge --ff --ff-only"
 [merge]
 	ff = false
 [push]
