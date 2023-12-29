@@ -2,7 +2,7 @@
 	path = .gitconfig.local
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore_global
 	pager = "LESSCHARSET=utf-8 less -FRX"
 [alias]
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
