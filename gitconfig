@@ -10,8 +10,8 @@
 	fa = "fetch --all"
 	sw = "switch"
 	swd = "switch --detach"
-	backup-changes-unstaging = "![ -z \"$(git diff HEAD)\" ] || (git commit -am 'backup' && git reset HEAD~)"
-	backup-changes = "!if [ -n \"$(git diff --cached)\" ]; then git commit -m 'backup stage' && git backup-changes-unstaging && git reset --soft HEAD~; else git backup-changes-unstaging; fi"
+	backup-changes-unstaging = "![ -z \"$(git diff HEAD)\" ] || (git commit -am \"backup changes on $(git rev-parse --short HEAD)\" && git reset HEAD~)"
+	backup-changes = "!if [ -n \"$(git diff --cached)\" ]; then git commit -m \"backup stage on $(git rev-parse --short HEAD)\" && git backup-changes-unstaging && git reset --soft HEAD~; else git backup-changes-unstaging; fi"
 	soft-reset = "reset --soft"
 	hard-reset = "!git backup-changes-unstaging && git reset --hard"
 [merge]
