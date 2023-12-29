@@ -8,6 +8,8 @@
 	mg = "merge --no-ff"
 	ff = "merge --ff --ff-only"
 	fa = "fetch --all"
+	sw = "switch"
+	swd = "switch --detach"
 [merge]
 	ff = false
 [push]
