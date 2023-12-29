@@ -5,12 +5,27 @@
 	excludesfile = ~/.gitignore_global
 	precomposeunicode = true
 [alias]
-	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
+	current-branch = "branch --show-current"
+	current-rev = "rev-parse --short HEAD"
+	current-rev-full = "rev-parse HEAD"
+	push-current = "-c push.default='current' push"
+	mg = "merge --no-ff"
+	ff = "merge --ff --ff-only"
+	fa = "fetch --all"
+	sw = "switch"
+	swd = "switch --detach"
+	df = "diff"
+	dfc = "diff --cached"
+	backup-changes-unstaging = "!git diff --quiet HEAD || (git commit -am \"backup changes on $(git current-rev)\" && git reset HEAD~)"
+	backup-changes = "!if git diff --quiet --cached; then git backup-changes-unstaging; else git commit -m \"backup stage on $(git current-rev)\" && git backup-changes-unstaging && git reset --soft HEAD~; fi"
+	soft-reset = "reset --soft"
+	hard-reset = "!git backup-changes && git reset --hard"
+	rst = "!git backup-changes && git restore"
 [merge]
 	ff = false
 [push]
-	default = current
+	default = simple
 [rebase]
 	autosquash = true
 [pull]
-	rebase = true
+	ff = only
