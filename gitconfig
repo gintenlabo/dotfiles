@@ -18,6 +18,7 @@
 	backup-changes = "!if git diff --quiet --cached; then git backup-changes-unstaging; else git commit -m \"backup stage on $(git current-rev)\" && git backup-changes-unstaging && git reset --soft HEAD~; fi"
 	soft-reset = "reset --soft"
 	hard-reset = "!git backup-changes && git reset --hard"
+	rst = "!git backup-changes && git restore"
 [merge]
 	ff = false
 [push]
