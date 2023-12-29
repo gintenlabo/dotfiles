@@ -23,4 +23,4 @@
 [rebase]
 	autosquash = true
 [pull]
-	rebase = true
+	ff = only
