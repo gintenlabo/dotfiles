@@ -3,7 +3,6 @@
 [core]
 	editor = vim
 	excludesfile = ~/.gitignore_global
-	pager = "LESSCHARSET=utf-8 less -FRX"
 [alias]
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
 [merge]
