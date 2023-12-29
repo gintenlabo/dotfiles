@@ -4,7 +4,7 @@
 	editor = vim
 	excludesfile = ~/.gitignore_global
 [alias]
-	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
+	current-branch = "branch --show-current"
 [merge]
 	ff = false
 [push]
