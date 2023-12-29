@@ -2,7 +2,7 @@
 	path = .gitconfig.local
 [core]
 	editor = vim
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.gitignore_global
 [alias]
 	current-branch = "!sh -c \"git branch | grep '*' | awk '{ print \\$2 }' \""
 [merge]
