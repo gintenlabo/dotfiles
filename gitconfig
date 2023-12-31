@@ -23,6 +23,7 @@
 	soft-reset = "reset --soft"
 	hard-reset = "!git backup-changes && git reset --hard"
 	rst = "!git backup-changes && git restore"
+	dft = "difftool"
 	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff \"$@\"; }; f"
 [merge]
 	ff = false
