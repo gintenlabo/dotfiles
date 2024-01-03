@@ -70,6 +70,10 @@ set autoindent
 set copyindent
 set preserveindent
 
+" search
+set ignorecase
+set smartcase
+
 " show blank chars
 set list
 set listchars=tab:»-,trail:-,extends:»,precedes:«,nbsp:%
