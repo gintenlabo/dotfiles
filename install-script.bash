@@ -147,6 +147,14 @@ run mkdir -p ~/.vim-backup
 run mkdir -p ~/.vim-undo
 run vim --cmd 'let g:onInitialSetup=1' +PluginInstall +qall
 
+# setup locale
+if locale -a | grep --quiet -Fx 'ja_JP.utf8'; then
+  echo -e "\nlocale is already installed; skipping..." >&2
+else
+  echo
+  run sudo localedef -f UTF-8 -i ja_JP ja_JP.UTF-8
+fi
+
 # install homebrew
 echo
 if type brew &>/dev/null ; then
