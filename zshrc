@@ -120,4 +120,5 @@ open() {
 alias o=open
 alias v=vim
 alias vi=vim
+alias idea=idea64.exe
 alias e=idea64.exe
