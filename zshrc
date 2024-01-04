@@ -113,3 +113,5 @@ alias o=open
 alias v=vim
 alias vi=vim
 alias e=mvim
+
+alias idea="open -na 'IntelliJ IDEA.app' --args"
