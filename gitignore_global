@@ -1,2 +1,5 @@
 # ignore asdf tool-versions file
 .tool-versions
+
+# IntelliJ IDEA
+.idea
