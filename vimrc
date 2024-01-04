@@ -66,6 +66,13 @@ set wildmode=longest,full " complete filename like bash
 " indent
 set expandtab
 set tabstop=2 shiftwidth=2 softtabstop=2
+set autoindent
+set copyindent
+set preserveindent
+
+" search
+set ignorecase
+set smartcase
 
 " show blank chars
 set list
