@@ -26,10 +26,10 @@
 	backup-changes-unstaging = "!git abort-if-merging && git diff --quiet HEAD || (git commit -am \"backup changes on $(git show-rev)\" && git reset HEAD~)"
 	backup-changes = "!git abort-if-merging && if git diff --quiet --cached; then git backup-changes-unstaging; else git commit -m \"backup stage on $(git show-rev)\" && git backup-changes-unstaging && git reset --soft HEAD~; fi"
 	soft-reset = "reset --soft"
-	hard-reset = "!git backup-changes && git reset --hard"
-	rst = "!git backup-changes && git restore"
+	hard-reset = "!cd \"${GIT_PREFIX:-.}\" && git backup-changes && git reset --hard"
+	rst = "!cd \"${GIT_PREFIX:-.}\" && git backup-changes && git restore"
 	dft = "difftool"
-	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff \"$@\"; }; f"
+	dlog = "!f() { cd \"${GIT_PREFIX:-.}\"; GIT_EXTERNAL_DIFF=difft git log -p --ext-diff \"$@\"; }; f"
 [merge]
 	ff = false
 [push]
