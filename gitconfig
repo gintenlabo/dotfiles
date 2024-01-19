@@ -10,6 +10,7 @@
 	show-rev = "show --format='%h' --no-patch"
 	show-rev-full = "show --format='%H' --no-patch"
 	push-current = "-c push.default='current' push"
+	push-matching = "-c push.default='matching' push"
 	mg = "merge --no-ff"
 	ff = "merge --ff --ff-only"
 	fa = "fetch --all"
