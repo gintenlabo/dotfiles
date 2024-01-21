@@ -57,6 +57,42 @@
 	    git fetch \"${remote}\" \"${merge_ref}:${local_ref}\";\
 	  fi;\
 	}; f"
+	show-config = "!f() {\
+	  if [ $# -ne 1 ]; then\
+	    echo 'usage: git show-config KEY' >&2;\
+	    return 1;\
+	  fi;\
+	  local key=\"$1\";\
+	  local values;\
+	  values=\"$(git config --show-origin \"${key}\")\";\
+	  local ret=$?;\
+	  if [ $ret -ne 0 ]; then\
+	    return $ret;\
+	  fi;\
+	  local file=\"${values%%\t*}\";\
+	  local value=\"${values#*\t}\";\
+	  printf '%s\\t%s=%s\\n' \"${file}\" \"${key}\" \"${value}\";\
+	}; f"
+	list-valid-config = "!f() {\
+	  if [ $# -eq 0 ]; then\
+	    local regexp='.*';\
+	  elif [ $# -eq 1 ]; then\
+	    local regexp=\"$1\";\
+	  else\
+	    echo 'usage: git list-valid-config [REGEXP]' >&2;\
+	    return 1;\
+	  fi;\
+	  local keys;\
+	  keys=\"$(git config --name-only --get-regexp \"${regexp}\")\";\
+	  local ret=$?;\
+	  if [ $ret -ne 0 ]; then\
+	    return $ret;\
+	  fi;\
+	  echo \"${keys}\" | sort -u | while read -r key; do\
+	    git show-config \"${key}\";\
+	  done;\
+	}; f"
+	me = "list-valid-config '^user\\.'"
 [merge]
 	ff = false
 [push]
