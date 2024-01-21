@@ -22,7 +22,7 @@
 	ci = "commit"
 	br = "branch"
 	is-merging = "!git rev-parse -q --verify MERGE_HEAD >/dev/null"
-	abort-if-merging = "!f() { if git is-merging; then if [ \"$#\" -gt 0 ]; then echo \"$@\" >&2; else echo \"fatal: You have not concluded your merge (MERGE_HEAD exists).\naborting...\" >&2; fi; return 1; fi }; f"
+	abort-if-merging = "!f() { if git is-merging; then if [ \"$#\" -gt 0 ]; then echo \"$@\" >&2; else echo \"fatal: You have not concluded your merge (MERGE_HEAD exists).\\naborting...\" >&2; fi; return 1; fi }; f"
 	backup-changes-unstaging = "!git abort-if-merging && git diff --quiet HEAD || (git commit -am \"backup changes on $(git show-rev)\" && git reset HEAD~)"
 	backup-changes = "!git abort-if-merging && if git diff --quiet --cached; then git backup-changes-unstaging; else git commit -m \"backup stage on $(git show-rev)\" && git backup-changes-unstaging && git reset --soft HEAD~; fi"
 	soft-reset = "reset --soft"
