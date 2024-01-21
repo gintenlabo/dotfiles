@@ -93,6 +93,7 @@
 	  done;\
 	}; f"
 	me = "list-valid-config '^user\\.'"
+	force-push = "push --force-with-lease --force-if-includes"
 [merge]
 	ff = false
 [push]
