@@ -22,7 +22,7 @@
 	ci = "commit"
 	br = "branch"
 	is-merging = "!git rev-parse -q --verify MERGE_HEAD >/dev/null"
-	abort-if-merging = "!f() { if git is-merging; then if [ \"$#\" -gt 0 ]; then echo \"$@\" >&2; else echo \"fatal: You have not concluded your merge (MERGE_HEAD exists).\naborting...\" >&2; fi; return 1; fi }; f"
+	abort-if-merging = "!f() { if git is-merging; then if [ \"$#\" -gt 0 ]; then echo \"$@\" >&2; else echo \"fatal: You have not concluded your merge (MERGE_HEAD exists).\\naborting...\" >&2; fi; return 1; fi }; f"
 	backup-changes-unstaging = "!git abort-if-merging && git diff --quiet HEAD || (git commit -am \"backup changes on $(git show-rev)\" && git reset HEAD~)"
 	backup-changes = "!git abort-if-merging && if git diff --quiet --cached; then git backup-changes-unstaging; else git commit -m \"backup stage on $(git show-rev)\" && git backup-changes-unstaging && git reset --soft HEAD~; fi"
 	soft-reset = "reset --soft"
@@ -30,8 +30,71 @@
 	rst = "!cd \"${GIT_PREFIX:-.}\" && git backup-changes && git restore"
 	dft = "difftool"
 	dlog = "!f() { cd \"${GIT_PREFIX:-.}\"; GIT_EXTERNAL_DIFF=difft git log -p --ext-diff \"$@\"; }; f"
+	lg = "log --oneline"
 	logf = "log --first-parent"
 	dlogf = "dlog --first-parent"
+	fetch-or-pull = "!f() {\
+	  if [ $# -gt 2 -o $# -lt 1 ]; then\
+	    echo 'usage: git fetch-or-pull [REMOTE] BRANCH' >&2;\
+	    return 1;\
+	  fi;\
+	  if [ $# -eq 2 ]; then\
+	    local remote=\"$1\";\
+	    local branch=\"$2\";\
+	    local merge_ref=\"refs/heads/${branch}\";\
+	  else\
+	    local branch=\"$1\";\
+	    local remote=\"$(git config \"branch.${branch}.remote\")\";\
+	    local merge_ref=\"$(git config \"branch.${branch}.merge\")\";\
+	    if [ -z \"${remote}\" -o -z \"${merge_ref}\" ]; then\
+	      echo \"no upstream is set for branch '${branch}'.\" >&2;\
+	      return 1;\
+	    fi;\
+	  fi;\
+	  if [ \"$(git current-branch)\" = \"${branch}\" ]; then\
+	    git pull \"${remote}\" \"${merge_ref}\";\
+	  else\
+	    local local_ref=\"refs/heads/${branch}\";\
+	    git fetch \"${remote}\" \"${merge_ref}:${local_ref}\";\
+	  fi;\
+	}; f"
+	show-config = "!f() {\
+	  if [ $# -ne 1 ]; then\
+	    echo 'usage: git show-config KEY' >&2;\
+	    return 1;\
+	  fi;\
+	  local key=\"$1\";\
+	  local values;\
+	  values=\"$(git config --show-origin \"${key}\")\";\
+	  local ret=$?;\
+	  if [ $ret -ne 0 ]; then\
+	    return $ret;\
+	  fi;\
+	  local file=\"${values%%\t*}\";\
+	  local value=\"${values#*\t}\";\
+	  printf '%s\\t%s=%s\\n' \"${file}\" \"${key}\" \"${value}\";\
+	}; f"
+	list-valid-config = "!f() {\
+	  if [ $# -eq 0 ]; then\
+	    local regexp='.*';\
+	  elif [ $# -eq 1 ]; then\
+	    local regexp=\"$1\";\
+	  else\
+	    echo 'usage: git list-valid-config [REGEXP]' >&2;\
+	    return 1;\
+	  fi;\
+	  local keys;\
+	  keys=\"$(git config --name-only --get-regexp \"${regexp}\")\";\
+	  local ret=$?;\
+	  if [ $ret -ne 0 ]; then\
+	    return $ret;\
+	  fi;\
+	  echo \"${keys}\" | sort -u | while read -r key; do\
+	    git show-config \"${key}\";\
+	  done;\
+	}; f"
+	me = "list-valid-config '^user\\.'"
+	force-push = "push --force-with-lease --force-if-includes"
 [merge]
 	ff = false
 [push]
