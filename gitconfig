@@ -30,6 +30,7 @@
 	rst = "!cd \"${GIT_PREFIX:-.}\" && git backup-changes && git restore"
 	dft = "difftool"
 	dlog = "!f() { cd \"${GIT_PREFIX:-.}\"; GIT_EXTERNAL_DIFF=difft git log -p --ext-diff \"$@\"; }; f"
+	lg = "log --oneline"
 	logf = "log --first-parent"
 	dlogf = "dlog --first-parent"
 	fetch-or-pull = "!f() {\
