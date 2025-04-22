@@ -147,3 +147,24 @@ echo
 run mkdir -p ~/.vim-backup
 run mkdir -p ~/.vim-undo
 run vim --cmd 'let g:onInitialSetup=1' +PluginInstall +qall
+
+# install homebrew
+echo
+if type brew &>/dev/null ; then
+  echo -e "homebrew already installed." >&2
+else
+  run sudo apt update
+  run sudo apt install build-essential procps curl file git
+  if [[ "${MODE}" == 'dry-run' ]]; then
+    print_dry_run_message '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'
+    print_dry_run_message 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+  else
+    print_executing_message '/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)'
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo 'done.'
+    print_executing_message 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    echo 'done.'
+  fi
+fi
+run brew bundle install --file=Brewfile

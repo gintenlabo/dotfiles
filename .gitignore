@@ -1,0 +1,3 @@
+# homebrew lock file; unlike yarn.lock, this file needs no version control.
+# cf. https://qiita.com/tearoom6/items/08d85f1816ab7ae11a03
+Brewfile.lock.json
