@@ -3,9 +3,10 @@
 First, install homebrew and coreutils
 
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval $(/opt/homebrew/bin/brew shellenv)
     brew install coreutils
 
-for `realpath` command in install script.
+for `grealpath` command in install script.
 
 Then run
 
