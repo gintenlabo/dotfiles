@@ -90,10 +90,6 @@ fi
 # init submodules
 run git submodule update --init
 
-# install homebrew packages (for grealpath)
-echo
-run brew bundle install --file=Brewfile
-
 # create symbolic links
 LINK_PREFIX="$(grealpath --relative-to="${HOME}" .)"
 echo
@@ -151,3 +147,7 @@ echo
 run mkdir -p ~/.vim-backup
 run mkdir -p ~/.vim-undo
 run vim --cmd 'let g:onInitialSetup=1' +PluginInstall +qall
+
+# install homebrew packages
+echo
+run brew bundle install --file=Brewfile
