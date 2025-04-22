@@ -147,3 +147,7 @@ echo
 run mkdir -p ~/.vim-backup
 run mkdir -p ~/.vim-undo
 run vim --cmd 'let g:onInitialSetup=1' +PluginInstall +qall
+
+# homebrew is preinstalled, so run install only
+echo
+run brew bundle install --file=Brewfile
