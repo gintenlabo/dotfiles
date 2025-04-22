@@ -90,8 +90,12 @@ fi
 # init submodules
 run git submodule update --init
 
+# install homebrew packages (for grealpath)
+echo
+run brew bundle install --file=Brewfile
+
 # create symbolic links
-LINK_PREFIX="$(realpath --relative-to="${HOME}" .)"
+LINK_PREFIX="$(grealpath --relative-to="${HOME}" .)"
 echo
 ./install-script-tools/ls-linking-files.bash | while read -r file; do
   DOTFILE_PATH="${HOME}/.${file}"
@@ -147,7 +151,3 @@ echo
 run mkdir -p ~/.vim-backup
 run mkdir -p ~/.vim-undo
 run vim --cmd 'let g:onInitialSetup=1' +PluginInstall +qall
-
-# homebrew is preinstalled, so run install only
-echo
-run brew bundle install --file=Brewfile
