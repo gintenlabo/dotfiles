@@ -15,3 +15,8 @@ export CPLUS_INCLUDE_PATH=$BOOST_ROOT:$CPLUS_INCLUDE_PATH
 
 # pkg-config
 export PKG_CONFIG_PATH=$HOME/local/lib/pkgconfig
+
+# homebrew
+if [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
